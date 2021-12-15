@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html>                                                             
+    <head> 
+        <title>Ma première page HTML - jQuery</title>                                        
+        <script type="text/javascript" src="jquery-3.1.1.js"></script> 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("a.show").click(function () {
+                    $("#text-hidden").show();
+                    return false;
+                });
+                $("a.hide").click(function () {
+                    $("#text-hidden").hide();
+                    return false;
+                });
+            });
+        </script>                                                       
+    </head>                                                            
+    <body> 
+        <a class="show" href="#">Afficher</a> 
+        <div id="text-hidden" style="display:none"> 
+            <a class="hide" href="#">Fermer</a> 
+            <p>Mon texte caché s'affiche ou disparait en fonction de mes 
+                clics</p> 
+        </div> 
+    </body>                                                                  
+</html>

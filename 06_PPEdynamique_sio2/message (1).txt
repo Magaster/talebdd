@@ -1,0 +1,84 @@
+!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+    <head>
+        <title>Nouveau client</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+        <meta http-equiv="content-language" content="fr" />
+        <link rel="stylesheet" type="text/css" href="styleform.css" />
+        <script type="text/javascript" src="jquery/jquery-1.12.4.js">
+        </script>
+        <script type="text/javascript">
+            
+            $(document).ready(function () {
+              
+            $("#valider").click(function () {
+                 
+            formValide = true;
+            //Traitements de toutes les zones de saisies
+            $("#nouveauClient input[type=text], #nouveauClient input[type=password] \n\
+            ").each(function() {
+            if ($(this).val() == ""){
+            $(this).next().addClass("message-erreur").text("Le champ est vide \n\
+            !").fadeIn();
+            formValide = false;
+            }
+            else $(this).next().fadeOut();
+            });
+            
+            //Traitement de la case à cocher
+            if (!$("#conditions").attr('checked')){
+            $("#erreurConditions").addClass("message-erreur").text("Acceptation obligatoire !").fadeIn();
+                    formValide = false;
+            }
+            else $("#erreurConditions").fadeOut();
+            
+            //On valide ou pas le formulaire selon le booleen formValide
+            return formValide;
+            });
+        });
+
+        </script>
+    </head>
+    <body>
+        <form id="nouveauClient" action="" method="post"> 
+            <div class="titre">Nouveau compte CLIENT</div><fieldset>
+                <legend> Identification : </legend>
+                <label for="pseudo">Pseudo choisi :</label> 
+                <input type='text' name='pseudo' 
+                       id='pseudo'/><span> </span><br /><label for="pass1"> Mot de passe :</label>
+                <input type='password' name='pass1' 
+                       id='pass1'/><br /><label></label><label for="pass2"> Resaisir le passe :</label><span></span>
+                <input type='password' 
+                       name='pass2' id='pass2'/><span></span><br />
+            </fieldset>
+
+            <fieldset>
+                <legend> Coordonnées : </legend>
+                <label for="mail">Adresse mail :</label> 
+                <input type='text' name='mail' 
+                       id='mail'/><br/><label for="nom">Nom :</label><span></span>
+                <input type='text' name='nom' id='nom'/><br /><label for="prenom">Prénom :</label><span></span>
+                <input type='text' name='prenom' 
+                       id='prenom'/><br />
+                <label for="cp">Code Postal :</label>
+                <input type='text' name='cp' 
+                       id='cp'/><br />
+
+                <label for="ville">Ville :</label><input type='text' name='ville' id='ville'/>
+            </fieldset>
+
+            <fieldset class="sansBordure">
+                <span> Acceptez-vous de recevoir notre newsletter ? </span>
+                <label for="oui" class="enligne">oui</label> <span></span>
+                <input type="radio" name="newsletter" value="oui" id="oui" checked="checked" /> 
+                <label for="non" class="enligne">non</label> <span></span>
+                <input type="radio" name="newsletter" value="non" id="non" /><br />
+                <input name='conditions' id='conditions' type='checkbox'/>
+                <label for="conditions" class="enligne">  J'accepte les <a href='/'>conditions générales</a></label><span></span><br />
+                <span id='erreurConditions'> </span><br />
+                <input type='submit' name='valider'id='valider' value='VALIDER' />
+            </fieldset>
+        </form>
+    </body>
+</html>

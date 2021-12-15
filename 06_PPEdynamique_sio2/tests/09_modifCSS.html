@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<html>                                                             
+    <head> 
+        <title>Ma première page HTML - jQuery</title>                                         
+        <script type="text/javascript" src="jquery-3.1.1.js"></script> 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#zone-texte").hover(function () {
+                    $(this).css({'background-color': '#555', 'color': '#FFF',
+                        'border': '1px solid #000'});
+                }, function () {
+                    $(this).css({'background-color': '#FFF', 'color': '#555',
+                        'border': '1px solid #555'});
+                });
+            });
+        </script>                                                       
+    </head>                                                            
+    <body> 
+        <div id="zone-texte"> 
+            Zone de texte qui change d'apparence lors d'un survol de souris !!! 
+        </div> 
+    </body>                                                                  
+</html> 
